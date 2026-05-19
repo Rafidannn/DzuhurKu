@@ -1,0 +1,14 @@
+# File konfigurasi yang sering diabaikan
+*.log
+*.tmp
+.vscode/
+.idea/
+
+# File backup
+*.bak
+*.old
+
+# Jangan lupa share database.sql ke teman-teman agar mereka bisa import di lokalnya.
+# Tapi ingat, JANGAN JADIKAN FILE EXCEL ATAU CSV RAHASIA SEBAGAI PUBLIC!
+*.xlsx
+*.csv
