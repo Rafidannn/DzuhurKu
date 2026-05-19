@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap');
+
+:root {
+    --primary: #10B981;
+    --primary-dark: #059669;
+    --primary-light: #D1FAE5;
+    --bg-color: #ECFDF5;
+    --text-main: #1F2937;
+    --text-muted: #6B7280;
+    --card-bg: #FFFFFF;
+    --border: #E5E7EB;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-main);
+}
+
+.login-container {
+    width: 100%;
+    max-width: 440px;
+    padding: 20px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.login-card {
+    background: var(--card-bg);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.1), 0 10px 15px -5px rgba(0, 0, 0, 0.02);
+    text-align: center;
+}
+
+.login-logo {
+    width: 85px;
+    height: auto;
+    margin-bottom: 16px;
+    filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.1));
+}
+
+.app-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+}
+
+.app-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    font-weight: 500;
+}
+
+.quote-box {
+    background: var(--primary-light);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 24px;
+    border-left: 4px solid var(--primary);
+}
+
+.quote-text {
+    font-size: 12px;
+    color: var(--primary-dark);
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.bismillah {
+    font-family: 'Amiri', serif;
+    font-size: 22px;
+    color: #D97706; 
+    margin: 16px 0 24px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-weight: bold;
+}
+
+.bismillah::before, .bismillah::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #FDE68A;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 16px;
+}
+
+.form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-main);
+}
+
+.form-input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: #F9FAFB;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: #FFFFFF;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
+}
+
+.form-input::placeholder {
+    color: #9CA3AF;
+}
+
+.forgot-pwd {
+    display: block;
+    text-align: right;
+    font-size: 13px;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: -4px;
+    margin-bottom: 24px;
+}
+
+.forgot-pwd:hover {
+    text-decoration: underline;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 24px;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(16, 185, 129, 0.3);
+}
+
+.register-text {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+.register-text a {
+    color: var(--primary-dark);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 11px;
+    color: #9CA3AF;
+}
+
+.card-footer span.dot {
+    width: 4px;
+    height: 4px;
+    background: #D1D5DB;
+    border-radius: 50%;
+}
+
+.main-footer {
+    text-align: center;
+    font-size: 12px;
+    color: #9CA3AF;
+    margin-top: 24px;
+    font-weight: 500;
+}
