@@ -113,7 +113,7 @@ while ($row = mysqli_fetch_assoc($query_kelas)) {
         </div>
         <div>
             <label class="filter-label">Filter Kelas</label>
-            <select name="kelas" class="filter-input" style="min-width: 200px;">
+            <select name="kelas" class="filter-input" style="min-width: 200px;" onchange="this.form.submit()">
                 <option value="">-- Semua Kelas --</option>
                 <?php foreach($kelas_list as $kls): ?>
                     <option value="<?= $kls['id_kelas']; ?>" <?= ($filter_kelas == $kls['id_kelas']) ? 'selected' : ''; ?>>

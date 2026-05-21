@@ -17,6 +17,142 @@ if (isset($_SESSION['login'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In - Dzuhurku</title>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        /* ============================================
+           KEYFRAME ANIMATIONS
+           ============================================ */
+        @keyframes spinSlow      { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes spinReverse   { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+        @keyframes floatUp       { 0%,100% { transform: translateY(0px);    } 50% { transform: translateY(-16px); } }
+        @keyframes floatUpTilt   { 0%,100% { transform: translateY(0px) rotate(0deg);  } 50% { transform: translateY(-12px) rotate(6deg);  } }
+        @keyframes floatDownTilt { 0%,100% { transform: translateY(0px) rotate(0deg);  } 50% { transform: translateY(-10px) rotate(-8deg); } }
+        @keyframes swingLamp     { 0%,100% { transform: rotate(-6deg) translateX(0);   } 50% { transform: rotate(6deg)  translateX(0); } }
+        @keyframes swingLampAlt  { 0%,100% { transform: rotate(5deg)  translateX(0);   } 50% { transform: rotate(-5deg) translateX(0); } }
+        @keyframes glowPulse     { 0%,100% { opacity: 0.7; filter: drop-shadow(0 0 8px rgba(255,200,80,0.5));  }
+                                   50%      { opacity: 1.0; filter: drop-shadow(0 0 22px rgba(255,200,80,0.9)); } }
+        @keyframes pulseScale    { 0%,100% { transform: scale(1); opacity: 0.15; }  50% { transform: scale(1.08); opacity: 0.22; } }
+
+        /* ============================================
+           BASE DECORATION CLASS
+           ============================================ */
+        .orn, .lamp { position: absolute; pointer-events: none; user-select: none; }
+
+        /* ============================================
+           ORNAMENT MANDALA — PANEL KIRI
+           ============================================ */
+
+        /* 1. Besar berputar — pojok kanan atas */
+        .orn-1 {
+            top: -100px; right: -100px;
+            width: 360px; opacity: 0.38;
+            animation: spinSlow 50s linear infinite;
+            filter: brightness(1.2) sepia(0.6) saturate(3) hue-rotate(5deg);
+            z-index: 0;
+        }
+        /* 2. Sedang berputar balik — pojok kiri bawah */
+        .orn-2 {
+            bottom: -80px; left: -80px;
+            width: 280px; opacity: 0.35;
+            animation: spinReverse 35s linear infinite;
+            filter: brightness(1.2) sepia(0.6) saturate(3) hue-rotate(10deg);
+            z-index: 0;
+        }
+        /* 3. Kecil melayang — pojok kiri atas */
+        .orn-3 {
+            top: 20px; left: 16px;
+            width: 100px; opacity: 0.45;
+            animation: floatUpTilt 7s ease-in-out infinite;
+            filter: brightness(1.1) sepia(0.5) saturate(3) hue-rotate(5deg);
+            z-index: 0;
+        }
+        /* 4. Sedang melayang — pojok kanan bawah */
+        .orn-4 {
+            bottom: 20px; right: 16px;
+            width: 130px; opacity: 0.40;
+            animation: floatDownTilt 9s ease-in-out infinite 1.5s;
+            filter: brightness(1.1) sepia(0.5) saturate(3) hue-rotate(5deg);
+            z-index: 0;
+        }
+        /* 5. Tengah (warm golden glow) */
+        .orn-5 {
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 220px; opacity: 0.12;
+            animation: pulseScale 12s ease-in-out infinite;
+            filter: brightness(1.5) sepia(0.8) saturate(4);
+            z-index: 0;
+        }
+        /* 6. Kecil — tengah kiri */
+        .orn-6 {
+            top: 42%; left: -30px;
+            width: 85px; opacity: 0.42;
+            animation: floatUp 6s ease-in-out infinite 2s;
+            filter: brightness(1.1) sepia(0.5) saturate(3) hue-rotate(5deg);
+            z-index: 0;
+        }
+        /* 7. Kecil — tengah kanan */
+        .orn-7 {
+            top: 38%; right: -25px;
+            width: 80px; opacity: 0.38;
+            animation: floatUpTilt 8s ease-in-out infinite 0.5s;
+            filter: brightness(1.1) sepia(0.5) saturate(3) hue-rotate(5deg);
+            z-index: 0;
+        }
+
+        /* ============================================
+           ORNAMENT — PANEL KANAN (form) - halus
+           ============================================ */
+        .orn-form-tr {
+            top: -55px; right: -55px;
+            width: 180px; opacity: 0.12;
+            animation: spinSlow 60s linear infinite;
+            filter: sepia(0.8) saturate(3) hue-rotate(5deg) brightness(1.2);
+        }
+        .orn-form-bl {
+            bottom: -55px; left: -55px;
+            width: 150px; opacity: 0.10;
+            animation: spinReverse 50s linear infinite;
+            filter: sepia(0.8) saturate(3) hue-rotate(5deg) brightness(1.2);
+        }
+
+        /* ============================================
+           LENTERA ISLAMI — PANEL KANAN (menggantung)
+           ============================================ */
+
+        /* Lentera utama — tengah atas panel kanan */
+        .lamp-main {
+            top: -18px; left: 50%;
+            transform-origin: top center;
+            margin-left: -50px;
+            width: 100px;
+            animation: swingLamp 5s ease-in-out infinite;
+            filter: drop-shadow(0 10px 24px rgba(255,180,50,0.6));
+            z-index: 10;
+        }
+        .lamp-main img { width: 100%; animation: glowPulse 3s ease-in-out infinite; }
+
+        /* Lentera kiri — atas kiri panel kanan */
+        .lamp-left {
+            top: -10px; left: 8%;
+            transform-origin: top center;
+            width: 65px;
+            animation: swingLampAlt 6.5s ease-in-out infinite 1s;
+            filter: drop-shadow(0 6px 14px rgba(255,180,50,0.45));
+            z-index: 10;
+        }
+        .lamp-left img { width: 100%; animation: glowPulse 4s ease-in-out infinite 0.8s; }
+
+        /* Lentera kanan — atas kanan panel kanan */
+        .lamp-right {
+            top: -14px; right: 8%;
+            transform-origin: top center;
+            width: 75px;
+            animation: swingLamp 7s ease-in-out infinite 0.5s;
+            filter: drop-shadow(0 6px 16px rgba(255,180,50,0.5));
+            z-index: 10;
+        }
+        .lamp-right img { width: 100%; animation: glowPulse 3.5s ease-in-out infinite 1.2s; }
+    </style>
 </head>
 <body>
 
@@ -44,13 +180,29 @@ if (isset($_SESSION['login'])) {
             <div class="watermark-decor-2"></div>
             <div class="watermark-bismillah">بِسْمِ اللَّهِ</div>
 
+            <!-- ====== ORNAMEN MANDALA EMAS ====== -->
+            <img src="../assets/images/ornament.png" alt="" class="orn orn-1">
+            <img src="../assets/images/ornament.png" alt="" class="orn orn-2">
+            <img src="../assets/images/ornament.png" alt="" class="orn orn-3">
+            <img src="../assets/images/ornament.png" alt="" class="orn orn-4">
+            <img src="../assets/images/ornament.png" alt="" class="orn orn-5">
+            <img src="../assets/images/ornament.png" alt="" class="orn orn-6">
+            <img src="../assets/images/ornament.png" alt="" class="orn orn-7">
+
             <!-- Custom wavy organic shapes and grid lines in background -->
             <div class="wave-bg"></div>
             <div class="grid-overlay"></div>
         </div>
 
         <!-- Right Side: Login Form -->
-        <div class="login-right">
+        <div class="login-right" style="position:relative; overflow:hidden;">
+            <!-- Ornamen halus pojok panel form -->
+            <img src="../assets/images/ornament.png" alt="" class="orn orn-form-tr">
+            <img src="../assets/images/ornament.png" alt="" class="orn orn-form-bl">
+            <!-- Lentera islami bergantung di atas form -->
+            <div class="lamp lamp-left"><img src="../assets/images/lampu.png" alt=""></div>
+            <div class="lamp lamp-main"><img src="../assets/images/lampu.png" alt=""></div>
+            <div class="lamp lamp-right"><img src="../assets/images/lampu.png" alt=""></div>
             <div class="login-card-new">
                 <div class="badge-pill">
                     <span>ASSALAMU ALAIKUM</span>

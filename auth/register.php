@@ -22,6 +22,21 @@ $query_kelas = mysqli_query($koneksi, "SELECT * FROM kelas ORDER BY nama_kelas A
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - Dzuhurku</title>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- Tom Select -->
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
+    <style>
+        @keyframes floatOrn { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-14px) rotate(8deg); } }
+        @keyframes floatOrnReverse { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-10px) rotate(-10deg); } }
+        @keyframes spinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes pulseOrn { 0%, 100% { opacity: 0.18; transform: scale(1) rotate(45deg); } 50% { opacity: 0.28; transform: scale(1.05) rotate(45deg); } }
+        .orn { position: absolute; pointer-events: none; user-select: none; }
+        .orn-tr { top: -80px; right: -80px; width: 320px; opacity: 0.13; animation: spinSlow 40s linear infinite; filter: brightness(2) sepia(1) saturate(3) hue-rotate(5deg); }
+        .orn-bl { bottom: -60px; left: -60px; width: 240px; opacity: 0.16; animation: floatOrn 8s ease-in-out infinite; filter: brightness(2) sepia(1) saturate(3) hue-rotate(5deg); }
+        .orn-center { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 160px; opacity: 0.07; animation: floatOrnReverse 10s ease-in-out infinite; filter: brightness(3) saturate(0) invert(1); }
+        .orn-tl { top: 30px; left: 20px; width: 90px; opacity: 0.18; animation: floatOrn 6s ease-in-out infinite 1s; filter: brightness(2) sepia(1) saturate(3) hue-rotate(5deg); }
+        .orn-form { bottom: -30px; right: -30px; width: 120px; opacity: 0.08; animation: pulseOrn 5s ease-in-out infinite; filter: sepia(1) saturate(4) hue-rotate(350deg); }
+    </style>
 </head>
 <body>
 
@@ -49,13 +64,20 @@ $query_kelas = mysqli_query($koneksi, "SELECT * FROM kelas ORDER BY nama_kelas A
             <div class="watermark-decor-2"></div>
             <div class="watermark-bismillah">بِسْمِ اللَّهِ</div>
 
+            <!-- Ornament Mandala Gold -->
+            <img src="../assets/images/ornament.png" alt="ornament" class="orn orn-tr">
+            <img src="../assets/images/ornament.png" alt="ornament" class="orn orn-bl">
+            <img src="../assets/images/ornament.png" alt="ornament" class="orn orn-center">
+            <img src="../assets/images/ornament.png" alt="ornament" class="orn orn-tl">
+
             <!-- Custom wavy organic shapes and grid lines in background -->
             <div class="wave-bg"></div>
             <div class="grid-overlay"></div>
         </div>
 
         <!-- Right Side: Register Form -->
-        <div class="login-right">
+        <div class="login-right" style="position:relative; overflow:hidden;">
+            <img src="../assets/images/ornament.png" alt="ornament" class="orn orn-form">
             <div class="login-card-new" style="margin-top: 20px; margin-bottom: 20px;">
                 <div class="badge-pill">
                     <span>DAFTAR AKUN</span>

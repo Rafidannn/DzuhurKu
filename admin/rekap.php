@@ -67,7 +67,7 @@ $result_rekap = mysqli_query($koneksi, $query_rekap);
         </div>
         <div>
             <label class="filter-label">Filter Kelas</label>
-            <select name="kelas" class="filter-input" style="min-width: 200px;">
+            <select name="kelas" class="filter-input" style="min-width: 200px;" onchange="this.form.submit()">
                 <option value="">-- Semua Kelas --</option>
                 <?php while ($kls = mysqli_fetch_assoc($query_kelas)): ?>
                     <option value="<?= $kls['id_kelas']; ?>" <?= ($filter_kelas == $kls['id_kelas']) ? 'selected' : ''; ?>>
