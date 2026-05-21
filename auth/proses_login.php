@@ -36,9 +36,8 @@ if (isset($_POST['login'])) {
         $_SESSION['nama']  = $data_murid['nama_murid'];
         $_SESSION['id']    = $data_murid['id_murid'];
         
-        // Sementara arahkan ke halaman dummy (bisa kita ubah nanti)
-        // Kita paksa arahkan kembali ke admin/index.php atau dashboard murid
-        header("Location: ../admin/index.php");
+        // Mengarahkan murid ke dashboard murid
+        header("Location: ../murid/index.php");
         exit();
     }
     
